@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IFAN</string>
+    <string name="buttonGetFact">Get Fact</string>
+    <string name="buttonGetRandomFact">Get fact about random number</string>
+    <string name="userNumber">Please write your number</string>
+    <string name="userStore">User Store</string>
+    <string name="fact_about_number">fact about number</string>
+    <string name="userNumberExist">To find out an interesting fact, please write the number</string>
+    <string name="toMain">Back to main page</string>
+</resources>
