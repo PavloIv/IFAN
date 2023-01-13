@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "user_storage")
-public class UserStorage {
+class UserStorage {
     @PrimaryKey(autoGenerate = true)
     public int id;
     @ColumnInfo(name = "fact")

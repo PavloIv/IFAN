@@ -2,7 +2,6 @@ package com.ip.ifan;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,19 +9,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.jsoup.Connection;
+
+import java.util.Arrays;
+
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 public class ResponseToUserActivity extends AppCompatActivity {
     private TextView responseToUser;
+    private TextView userNumberViev;
     private Button toMain;
-    private String urlFactUserNumber;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +28,65 @@ public class ResponseToUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_response_to_user);
 
         responseToUser = findViewById(R.id.responseToUser);
+        userNumberViev = findViewById(R.id.userNumberViev);
+
+        toMain = findViewById(R.id.toMaim);
 
         Intent intentStartActivity = getIntent();
         if (intentStartActivity.hasExtra(Intent.EXTRA_TEXT)){
-            urlFactUserNumber = intentStartActivity.getStringExtra(Intent.EXTRA_TEXT);
-            new GetUrlData().execute(urlFactUserNumber);
-        }
+            String userNumber = intentStartActivity.getStringExtra(Intent.EXTRA_TEXT);
+            GetFacts.getFactsAboutNumber(userNumber)
+                    .subscribe(new Observer<Connection.Response>() {
+                        @Override
+                        public void onSubscribe(@NonNull Disposable d) {
 
-        toMain = findViewById(R.id.toMaim);
+                        }
+
+                        @Override
+                        public void onNext(Connection.@NonNull Response response) {
+                            userNumberViev.setText(userNumber);
+                            responseToUser.setText(response.body());
+                        }
+
+                        @Override
+                        public void onError(@NonNull Throwable e) {
+                            responseToUser.setText("We have problem." +
+                                    "Maybe your don't write your number? " +
+                                    "Try again");
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }else {
+            GetFacts.getFactsAboutNumberRandomNumber().subscribe(new Observer<Connection.Response>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(Connection.@NonNull Response response) {
+                    userNumberViev.setText(Arrays
+                            .stream(response.body().trim().split(" "))
+                            .findFirst().get()
+                            .toString());
+                    responseToUser.setText(response.body());
+                }
+
+                @Override
+                public void onError(@NonNull Throwable e) {
+                    responseToUser.setText("We have problem.Try again");
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            });
+        }
 
         toMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,58 +98,5 @@ public class ResponseToUserActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private class GetUrlData extends AsyncTask<String, String, String> {
-
-        protected void onPreExecute() {
-            super.onPreExecute();
-            responseToUser.setText("Please wait...");
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
-
-            try {
-                URL url = new URL(strings[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-
-                InputStream stream = connection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                StringBuffer buffer = new StringBuffer();
-                String line = "";
-                while ((line = reader.readLine()) != null)
-                    buffer.append(line).append("\n");
-
-                System.out.println(buffer.toString());
-                return buffer.toString();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (connection != null)
-                    connection.disconnect();
-
-                try {
-                    if (reader != null) {
-                        reader.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result){
-            super.onPostExecute(result);
-            responseToUser.setText(result);
-            System.out.println(responseToUser);
-        }
     }
 }

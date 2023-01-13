@@ -11,13 +11,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jsoup.Connection;
+
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText userNumber;
     private Button getFact;
     private Button getRandomNumberFact;
-    private TextView userStore;
+//    private TextView userStore;
     private String urlFactUserNumber;
+
+    private TextView facts;
+    private Button factsButton;
 
 
     @SuppressLint("MissingInflatedId")
@@ -29,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         userNumber = findViewById(R.id.userNumber);
         getFact = findViewById(R.id.getFact);
         getRandomNumberFact = findViewById(R.id.getRandomNumberFact);
-        userStore = findViewById(R.id.userStore);
+//        userStore = findViewById(R.id.userStore);
+        facts = findViewById(R.id.fact);
+        factsButton = findViewById(R.id.factButton);
 
 
         getFact.setOnClickListener(new View.OnClickListener() {
@@ -38,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 Context context = MainActivity.this;
                 Class destActivity = ResponseToUserActivity.class;
                     String number = userNumber.getText().toString();
-                    urlFactUserNumber = ("http://numbersapi.com/" + number + "/trivia");
                     Intent intent = new Intent(context,destActivity);
-                    intent.putExtra(Intent.EXTRA_TEXT,urlFactUserNumber);
+                    intent.putExtra(Intent.EXTRA_TEXT,number);
                     startActivity(intent);
 
             }
@@ -49,13 +59,10 @@ public class MainActivity extends AppCompatActivity {
         getRandomNumberFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String urlFactRandomNumber = "http://numbersapi.com/random/math";
                 Intent intent = new Intent(".ResponseToUserActivity");
-                intent.putExtra(Intent.EXTRA_TEXT,urlFactRandomNumber);
                 startActivity(intent);
 
             }
         });
     }
-
 }

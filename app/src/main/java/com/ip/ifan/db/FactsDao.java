@@ -7,7 +7,7 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserStorageDao {
+interface UserStorageDao {
 
     @Query("SELECT * FROM user_storage")
     List<UserStorage> getUserStorage();
