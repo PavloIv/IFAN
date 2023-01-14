@@ -11,22 +11,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.jsoup.Connection;
-
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.disposables.Disposable;
-
 
 public class MainActivity extends AppCompatActivity {
     private EditText userNumber;
     private Button getFact;
     private Button getRandomNumberFact;
-//    private TextView userStore;
-    private String urlFactUserNumber;
-
-    private TextView facts;
-    private Button factsButton;
+    private TextView userStore;
 
 
     @SuppressLint("MissingInflatedId")
@@ -38,10 +28,7 @@ public class MainActivity extends AppCompatActivity {
         userNumber = findViewById(R.id.userNumber);
         getFact = findViewById(R.id.getFact);
         getRandomNumberFact = findViewById(R.id.getRandomNumberFact);
-//        userStore = findViewById(R.id.userStore);
-        facts = findViewById(R.id.fact);
-        factsButton = findViewById(R.id.factButton);
-
+        userStore = findViewById(R.id.userStore);
 
         getFact.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,7 +19,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 public class ResponseToUserActivity extends AppCompatActivity {
     private TextView responseToUser;
-    private TextView userNumberViev;
+    private TextView userNumberView;
     private Button toMain;
 
     @Override
@@ -28,7 +28,7 @@ public class ResponseToUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_response_to_user);
 
         responseToUser = findViewById(R.id.responseToUser);
-        userNumberViev = findViewById(R.id.userNumberViev);
+        userNumberView = findViewById(R.id.userNumberViev);
 
         toMain = findViewById(R.id.toMaim);
 
@@ -44,7 +44,7 @@ public class ResponseToUserActivity extends AppCompatActivity {
 
                         @Override
                         public void onNext(Connection.@NonNull Response response) {
-                            userNumberViev.setText(userNumber);
+                            userNumberView.setText(userNumber);
                             responseToUser.setText(response.body());
                         }
 
@@ -69,7 +69,7 @@ public class ResponseToUserActivity extends AppCompatActivity {
 
                 @Override
                 public void onNext(Connection.@NonNull Response response) {
-                    userNumberViev.setText(Arrays
+                    userNumberView.setText(Arrays
                             .stream(response.body().trim().split(" "))
                             .findFirst().get()
                             .toString());
