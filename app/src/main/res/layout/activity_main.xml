@@ -49,17 +49,60 @@
 
     <TextView
         android:id="@+id/userStore"
-        android:layout_width="373dp"
-        android:layout_height="290dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="60dp"
         android:text="@string/userStore"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getFact" />
+    <TextView
+        android:id="@+id/userStore2"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userStore" />
+    <TextView
+        android:id="@+id/userStore3"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userStore2" />
+    <TextView
+        android:id="@+id/userStore4"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userStore3" />
+    <TextView
+        android:id="@+id/userStore5"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:text=""
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getFact"
+        app:layout_constraintTop_toBottomOf="@+id/userStore4"
         app:layout_constraintVertical_bias="0.0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
