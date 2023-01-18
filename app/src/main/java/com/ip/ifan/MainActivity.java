@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ip.ifan.db.Facts;
-
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -48,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getList().subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(facts -> {
-                    userStore.setText(facts.get(facts.size()-1).getFact());
-                    userStore2.setText(facts.get(facts.size()-2).getFact());
-                    userStore3.setText(facts.get(facts.size()-3).getFact());
-                    userStore4.setText(facts.get(facts.size()-4).getFact());
-                    userStore5.setText(facts.get(facts.size()-5).getFact());
+                    userStore.setText(facts.get(facts.size() - 1).getFact());
+                    userStore2.setText(facts.get(facts.size() - 2).getFact());
+                    userStore3.setText(facts.get(facts.size() - 3).getFact());
+                    userStore4.setText(facts.get(facts.size() - 4).getFact());
+                    userStore5.setText(facts.get(facts.size() - 5).getFact());
                 }, e -> System.out.println("roomWithRx" + e.getMessage()));
 
         getFact.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Context context = MainActivity.this;
                 Class destActivity = ResponseToUserActivity.class;
-                    String number = userNumber.getText().toString();
-                    Intent intent = new Intent(context,destActivity);
-                    intent.putExtra(Intent.EXTRA_TEXT,number);
-                    startActivity(intent);
+                String number = userNumber.getText().toString();
+                Intent intent = new Intent(context, destActivity);
+                intent.putExtra(Intent.EXTRA_TEXT, number);
+                startActivity(intent);
 
             }
         });

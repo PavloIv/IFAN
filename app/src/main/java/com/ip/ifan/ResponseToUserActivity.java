@@ -35,7 +35,6 @@ public class ResponseToUserActivity extends AppCompatActivity {
 
         responseToUser = findViewById(R.id.responseToUser);
         userNumberView = findViewById(R.id.userNumberViev);
-
         toMain = findViewById(R.id.toMaim);
         viewModel = new RoomWithRxJavaViewModel(this.getApplication());
 
@@ -70,7 +69,6 @@ public class ResponseToUserActivity extends AppCompatActivity {
             GetFacts.getFactsAboutNumberRandomNumber().subscribe(new Observer<Connection.Response>() {
                 @Override
                 public void onSubscribe(@NonNull Disposable d) {
-
                 }
 
                 @Override
@@ -97,8 +95,10 @@ public class ResponseToUserActivity extends AppCompatActivity {
         toMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDisposable.add(viewModel.addData(numberFact).subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread()).subscribe());
+                if (numberFact != null) {
+                    mDisposable.add(viewModel.addData(numberFact).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread()).subscribe());
+                }
                 Context context = ResponseToUserActivity.this;
                 Class destActivity = MainActivity.class;
                 Intent intent = new Intent(context, destActivity);

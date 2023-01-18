@@ -5,10 +5,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "facts")
-public  class Facts {
-    @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id")
+public class Facts {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
-    @ColumnInfo(name =  "fact")
+    @ColumnInfo(name = "fact")
     private String fact;
 
     public int getId() {

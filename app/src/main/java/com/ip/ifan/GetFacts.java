@@ -11,21 +11,17 @@ public class GetFacts {
 
     private static String url;
 
-    public static Observable<Connection.Response> getFactsAboutNumber(String number){
-            url = "http://numbersapi.com/" + number + "/trivia";
-      Observable<Connection.Response>  response = Observable.fromCallable(() -> {
-          return Jsoup.connect(url).execute();
-              })
-              .subscribeOn(Schedulers.io())
-              .observeOn(AndroidSchedulers.mainThread());
+    public static Observable<Connection.Response> getFactsAboutNumber(String number) {
+        url = "http://numbersapi.com/" + number + "/trivia";
+        Observable<Connection.Response> response = Observable.fromCallable(() -> Jsoup.connect(url).execute())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
         return response;
     }
 
-    public static Observable<Connection.Response> getFactsAboutNumberRandomNumber(){
+    public static Observable<Connection.Response> getFactsAboutNumberRandomNumber() {
         url = "http://numbersapi.com/random/math";
-        Observable<Connection.Response>  response = Observable.fromCallable(() -> {
-                    return Jsoup.connect(url).execute();
-                })
+        Observable<Connection.Response> response = Observable.fromCallable(() -> Jsoup.connect(url).execute())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return response;

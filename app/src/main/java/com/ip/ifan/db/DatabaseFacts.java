@@ -11,7 +11,7 @@ public abstract class DatabaseFacts extends RoomDatabase {
 
     private static DatabaseFacts instance;
 
-    public static DatabaseFacts getDatabase( Context context) {
+    public static DatabaseFacts getDatabase(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context,
                     DatabaseFacts.class, "database_facts.db").build();
