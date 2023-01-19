@@ -3,7 +3,6 @@ package com.ip.ifan;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -34,7 +33,7 @@ public class ResponseToUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_response_to_user);
 
         responseToUser = findViewById(R.id.responseToUser);
-        userNumberView = findViewById(R.id.userNumberViev);
+        userNumberView = findViewById(R.id.userNumberView);
         toMain = findViewById(R.id.toMaim);
         viewModel = new RoomWithRxJavaViewModel(this.getApplication());
 
@@ -92,18 +91,15 @@ public class ResponseToUserActivity extends AppCompatActivity {
             });
         }
 
-        toMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (numberFact != null) {
-                    mDisposable.add(viewModel.addData(numberFact).subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread()).subscribe());
-                }
-                Context context = ResponseToUserActivity.this;
-                Class destActivity = MainActivity.class;
-                Intent intent = new Intent(context, destActivity);
-                startActivity(intent);
+        toMain.setOnClickListener(view -> {
+            if (numberFact != null) {
+                mDisposable.add(viewModel.addData(numberFact).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe());
             }
+            Context context = ResponseToUserActivity.this;
+            Class<MainActivity> destActivity = MainActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            startActivity(intent);
         });
     }
 }

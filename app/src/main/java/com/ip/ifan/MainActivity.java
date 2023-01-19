@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText userNumber;
     private Button getFact;
     private Button getRandomNumberFact;
-    private TextView userStore;
-    private TextView userStore2;
-    private TextView userStore3;
-    private TextView userStore4;
-    private TextView userStore5;
+    private Button userStore;
+    private Button userStore2;
+    private Button userStore3;
+    private Button userStore4;
+    private Button userStore5;
     private RoomWithRxJavaViewModel viewModel;
 
     @SuppressLint("MissingInflatedId")
@@ -43,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getList().subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(facts -> {
-                    userStore.setText(facts.get(facts.size() - 1).getFact());
-                    userStore2.setText(facts.get(facts.size() - 2).getFact());
-                    userStore3.setText(facts.get(facts.size() - 3).getFact());
-                    userStore4.setText(facts.get(facts.size() - 4).getFact());
-                    userStore5.setText(facts.get(facts.size() - 5).getFact());
+                    userStore.setText(facts.get(facts.size() - 1).getFact().substring(0,30) + "...");
+                    userStore2.setText(facts.get(facts.size() - 2).getFact().substring(0,30) + "...");
+                    userStore3.setText(facts.get(facts.size() - 3).getFact().substring(0,30) + "...");
+                    userStore4.setText(facts.get(facts.size() - 4).getFact().substring(0,30) + "...");
+                    userStore5.setText(facts.get(facts.size() - 5).getFact().substring(0,30) + "...");
                 }, e -> System.out.println("roomWithRx" + e.getMessage()));
 
         getFact.setOnClickListener(view -> {

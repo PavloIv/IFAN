@@ -8,7 +8,7 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/responseToUser"
+        android:id="@+id/factStoreView"
         android:layout_width="300sp"
         android:layout_height="300sp"
         android:layout_marginStart="50dp"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/userNumberView"
+        android:id="@+id/numberFromFactView"
         android:layout_width="300sp"
         android:layout_height="150sp"
         android:layout_marginStart="50dp"
@@ -39,7 +39,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="100sp"
-        app:layout_constraintBottom_toTopOf="@+id/responseToUser"
+        app:layout_constraintBottom_toTopOf="@+id/factStoreView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,5 +54,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/responseToUser" />
+        app:layout_constraintTop_toBottomOf="@+id/factStoreView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

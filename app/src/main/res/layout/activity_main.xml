@@ -47,10 +47,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/getFact" />
 
-    <TextView
+    <Button
         android:id="@+id/userStore"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
+        android:backgroundTint="@color/black"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:text="@string/userStore"
         android:textColor="@color/white"
@@ -58,45 +59,49 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getFact" />
-    <TextView
+    <Button
         android:id="@+id/userStore2"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
+        android:backgroundTint="@color/black"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text=""
+        android:text="2"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userStore" />
-    <TextView
+    <Button
         android:id="@+id/userStore3"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
+        android:backgroundTint="@color/black"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text=""
+        android:text="3"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userStore2" />
-    <TextView
+    <Button
         android:id="@+id/userStore4"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
+        android:backgroundTint="@color/black"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text=""
+        android:text="4"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userStore3" />
-    <TextView
+    <Button
         android:id="@+id/userStore5"
-        android:layout_width="348dp"
-        android:layout_height="38dp"
+        android:backgroundTint="@color/black"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text=""
+        android:text="5"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
