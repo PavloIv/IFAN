@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
@@ -26,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView userStore4;
     private TextView userStore5;
     private RoomWithRxJavaViewModel viewModel;
-    private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -53,26 +50,20 @@ public class MainActivity extends AppCompatActivity {
                     userStore5.setText(facts.get(facts.size() - 5).getFact());
                 }, e -> System.out.println("roomWithRx" + e.getMessage()));
 
-        getFact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = MainActivity.this;
-                Class destActivity = ResponseToUserActivity.class;
-                String number = userNumber.getText().toString();
-                Intent intent = new Intent(context, destActivity);
-                intent.putExtra(Intent.EXTRA_TEXT, number);
-                startActivity(intent);
+        getFact.setOnClickListener(view -> {
+            Context context = MainActivity.this;
+            Class<ResponseToUserActivity> destActivity = ResponseToUserActivity.class;
+            String number = userNumber.getText().toString();
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, number);
+            startActivity(intent);
 
-            }
         });
 
-        getRandomNumberFact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(".ResponseToUserActivity");
-                startActivity(intent);
+        getRandomNumberFact.setOnClickListener(view -> {
+            Intent intent = new Intent(".ResponseToUserActivity");
+            startActivity(intent);
 
-            }
         });
     }
 }
