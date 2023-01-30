@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText userNumber;
     private Button getFact;
     private Button getRandomNumberFact;
+    private String userStoreString;
+    private String userStoreString2;
+    private String userStoreString3;
+    private String userStoreString4;
+    private String userStoreString5;
     private Button userStore;
     private Button userStore2;
     private Button userStore3;
@@ -42,11 +47,16 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getList().subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(facts -> {
-                    userStore.setText(facts.get(facts.size() - 1).getFact().substring(0,30) + "...");
-                    userStore2.setText(facts.get(facts.size() - 2).getFact().substring(0,30) + "...");
-                    userStore3.setText(facts.get(facts.size() - 3).getFact().substring(0,30) + "...");
-                    userStore4.setText(facts.get(facts.size() - 4).getFact().substring(0,30) + "...");
-                    userStore5.setText(facts.get(facts.size() - 5).getFact().substring(0,30) + "...");
+                    userStoreString = facts.get(facts.size()-1).getFact();
+                    userStoreString2 = facts.get(facts.size()-2).getFact();
+                    userStoreString3 = facts.get(facts.size()-3).getFact();
+                    userStoreString4 = facts.get(facts.size()-4).getFact();
+                    userStoreString5 = facts.get(facts.size()-5).getFact();
+                    userStore.setText(userStoreString.substring(0,28) + "...");
+                    userStore2.setText(userStoreString2.substring(0,28) + "...");
+                    userStore3.setText(userStoreString3.substring(0,28) + "...");
+                    userStore4.setText(userStoreString4.substring(0,28) + "...");
+                    userStore5.setText(userStoreString5.substring(0,28) + "...");
                 }, e -> System.out.println("roomWithRx" + e.getMessage()));
 
         getFact.setOnClickListener(view -> {
@@ -63,6 +73,42 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(".ResponseToUserActivity");
             startActivity(intent);
 
+        });
+
+        userStore.setOnClickListener(view ->{
+            Context context = MainActivity.this;
+            Class<StoreFactsActivity> destActivity = StoreFactsActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, userStoreString);
+            startActivity(intent);
+        });
+        userStore2.setOnClickListener(view ->{
+            Context context = MainActivity.this;
+            Class<StoreFactsActivity> destActivity = StoreFactsActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, userStoreString2);
+            startActivity(intent);
+        });
+        userStore3.setOnClickListener(view ->{
+            Context context = MainActivity.this;
+            Class<StoreFactsActivity> destActivity = StoreFactsActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, userStoreString3);
+            startActivity(intent);
+        });
+        userStore4.setOnClickListener(view ->{
+            Context context = MainActivity.this;
+            Class<StoreFactsActivity> destActivity = StoreFactsActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, userStoreString4);
+            startActivity(intent);
+        });
+        userStore5.setOnClickListener(view ->{
+            Context context = MainActivity.this;
+            Class<StoreFactsActivity> destActivity = StoreFactsActivity.class;
+            Intent intent = new Intent(context, destActivity);
+            intent.putExtra(Intent.EXTRA_TEXT, userStoreString5);
+            startActivity(intent);
         });
     }
 }
